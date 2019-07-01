@@ -339,10 +339,10 @@ executable permission. This is often caused by a bad launch-prefix."""%(e.strerr
 
             self.started = True
             if self.log_output:
+                self.stop_logging = False
                 self.logging_thread = threading.Thread(target=self._write_to_log)
                 self.logging_thread.setDaemon(True)
                 self.logging_thread.start()
-                self.stop_logging = False
 
             # Check that the process is either still running (poll returns
             # None) or that it completed successfully since when we
